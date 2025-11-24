@@ -236,7 +236,7 @@ function simulateBattle() {
 
             if (selectOne.feature == "@修仙#") {
                 if (selectOne.featureInfluence != 0) {
-                    selectOne.featureInfluence == second;
+                    selectOne.featureInfluence = second;
                 }
                 if (second % 80 == 0) {
                     selectOne.hurtValue += 3;
@@ -330,5 +330,6 @@ function endBattle() {
         addBattleLog(`${gameState.team2[0].name}击败了${gameState.team1[0].name},
     ${gameState.team2[0].name}获胜！！！`);
     }
+
 
 }
