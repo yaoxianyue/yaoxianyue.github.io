@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>英雄格斗游戏</title>
+    <link rel="stylesheet" href="./cssPart/gedou.css">
+</head>
+
+<body>
+    <div class="game-container">
+        <div class="game-header">
+            <h1 class="game-title">⚔️ 英雄格斗游戏 ⚔️</h1>
+            <div class="header-controls">
+                <select id="multiplierSelect" class="multiplier-select">
+                    <option value="1">×1</option>
+                    <option value="2">×2</option>
+                    <option value="4">×4</option>
+                </select>
+                <button id="instructionsBtn" class="instructions-btn">说明书</button>
+            </div>
+        </div>
+
+        <div id="characterSelection" class="character-selection">
+            <div class="character-card" onclick="selectCharacter('Shooter', this)">
+                <div>🏹 箭手</div>
+                <div>生命: 1</div>
+                <div>血量: 785-810</div>
+                <div>护甲: 356,372,380</div>
+                <div>技伤: 52,56,60</div>
+                <div>伤害: 26-29</div>
+                <div>技率: 10-11</div>
+                <div>暴击: 17-18</div>
+                <div>能量: 0</div>
+                <div>速度: 2</div>
+            </div>
+            <div class="character-card" onclick="selectCharacter('Rusher', this)">
+                <div>🗡️ 突袭者</div>
+                <div>生命: 1</div>
+                <div>血量: 680-705</div>
+                <div>护甲: 312,318,322</div>
+                <div>技伤: 60,64,68</div>
+                <div>伤害: 30-34</div>
+                <div>技率: 9-10</div>
+                <div>暴击: 17-19</div>
+                <div>能量: 0</div>
+                <div>速度: 2</div>
+            </div>
+            <div class="character-card" onclick="selectCharacter('Giant', this)">
+                <div>🦾 巨人</div>
+                <div>生命: 1</div>
+                <div>血量: 1850-1900</div>
+                <div>护甲: 850,860,870</div>
+                <div>技伤: 100,104,108</div>
+                <div>伤害: 50-54</div>
+                <div>技率: 11-12</div>
+                <div>暴击: 12-13</div>
+                <div>能量: 0</div>
+                <div>速度: 7</div>
+            </div>
+            <div class="character-card" onclick="selectCharacter('Twin', this)">
+                <div>⚖️ 双子</div>
+                <div>生命: 1</div>
+                <div>血量: 641/645,565/870,715</div>
+                <div>护甲: 320/325,285/450,320+25*?</div>
+                <div>技伤: 80,85,75</div>
+                <div>伤害: 37/34,50/25,22/42</div>
+                <div>技率: 10</div>
+                <div>暴击: 11/12,12/10,12</div>
+                <div>能量: 0</div>
+                <div>速度: 3,3/4,4/3</div>
+            </div>
+            <div class="character-card" onclick="selectCharacter('NineTailedFox', this)">
+                <div>🦊 九尾妖狐</div>
+                <div>生命: 9</div>
+                <div>血量: 168</div>
+                <div>护甲: 78,81,75</div>
+                <div>技伤: 48,50,52</div>
+                <div>伤害: 48,50,52</div>
+                <div>技率: 12-13</div>
+                <div>暴击: 11-12</div>
+                <div>能量: 0</div>
+                <div>速度: 3(4)</div>
+            </div>
+            <div class="character-card" onclick="selectCharacter('MysteryMan', this)">
+                <div>🔮 奇人</div>
+                <div>生命: 1</div>
+                <div>血量: 850-865</div>
+                <div>护甲: 415,422</div>
+                <div>技伤: 72,105</div>
+                <div>伤害: 15-16 + 12%</div>
+                <div>技率: 10-11</div>
+                <div>暴击: 12-13</div>
+                <div>能量: 0</div>
+                <div>速度: 4</div>
+            </div>
+            <div class="character-card" onclick="selectCharacter('LotteryMan', this)">
+                <div>🎰 抽奖家</div>
+                <div>生命: 1</div>
+                <div>血量: 1100-1119</div>
+                <div>护甲: 540,570</div>
+                <div>技伤: 105,110</div>
+                <div>伤害: ?(35-39)</div>
+                <div>技率: 12-13</div>
+                <div>暴击: ?(10-22)</div>
+                <div>能量: 0</div>
+                <div>速度: ?(3-5)</div>
+            </div>
+            <div class="character-card" onclick="selectCharacter('LongRen', this)">
+                <div>🐉 龙人</div>
+                <div>生命: 1</div>
+                <div>血量: 750->1100(max),750->900(max)</div>
+                <div>护甲: 775,925</div>
+                <div>技伤: 70->98(max),80</div>
+                <div>伤害: 14->34(max),51->36(min)</div>
+                <div>技率: 10->15(max),12</div>
+                <div>暴击: 10->15(max),12->18(max)</div>
+                <div>能量: 0</div>
+                <div>速度: 5->3(min),5->3(min)</div>
+            </div>
+            <div class="character-card" onclick="selectCharacter('IronMan', this)">
+                <div>🤖 铁人</div>
+                <div>生命: 1</div>
+                <div>血量: 800-820</div>
+                <div>护甲: 1650,1662</div>
+                <div>技伤: 70,72</div>
+                <div>伤害: 38-41</div>
+                <div>技率: 11-12</div>
+                <div>暴击: 11-12</div>
+                <div>能量: 0</div>
+                <div>速度: 5</div>
+            </div>
+            <div class="character-card" onclick="selectCharacter('Enchanter', this)">
+                <div>🧙 法师</div>
+                <div>生命: 1</div>
+                <div>血量: 850-875</div>
+                <div>护甲: 298,303,308</div>
+                <div>技伤: 100,105,110</div>
+                <div>伤害: 36-40</div>
+                <div>技率: 23-24</div>
+                <div>暴击: 10-11</div>
+                <div>能量: 40</div>
+                <div>速度: 4</div>
+            </div>
+            <div class="character-card" onclick="selectCharacter('CrazyDemon', this)">
+                <div>😈 疯魔</div>
+                <div>生命: 1</div>
+                <div>血量: 1150-1170</div>
+                <div>护甲: 562,570</div>
+                <div>技伤: 25,28</div>
+                <div>伤害: 8-9</div>
+                <div>技率: 10-11</div>
+                <div>暴击: 10-11</div>
+                <div>能量: 0</div>
+                <div>速度: 1</div>
+            </div>
+            <div class="character-card" onclick="selectCharacter('AncientBeast', this)">
+                <div>🐾 古兽</div>
+                <div>生命: 1</div>
+                <div>血量: 1530-1560</div>
+                <div>护甲: 735,745,755</div>
+                <div>技伤: 180,185,190</div>
+                <div>伤害: 90-95</div>
+                <div>技率: 19-20</div>
+                <div>暴击: 12-13</div>
+                <div>能量: 0</div>
+                <div>速度: 11</div>
+            </div>
+            <div class="character-card" onclick="selectCharacter('God', this)">
+                <div>🌟 天神</div>  
+                <div>生命: 1</div>
+                <div>血量: 1000+100*?,999,888/时间*10</div>
+                <div>护甲: 500+50*?,499,425</div>
+                <div>技伤: 100,135,50</div>
+                <div>伤害: 36+5*?,25/40/57/75/95,19+3*?</div>
+                <div>技率: 12,11,13</div>
+                <div>暴击: 10,11,12</div>
+                <div>能量: 0</div>
+                <div>速度: 3-4,2-6,3</div>
+            </div>
+        </div>
+
+        <div id="battleArea" style="display: none;">
+            <div class="game-status" id="gameStatus">选择角色开始战斗！</div>
+            <div class="battlefield">
+                <div class="player" id="player1">
+                    <div class="player-image">👤</div>
+                    <div class="player-name" id="player1Name">玩家1</div>
+                    <div class="player-stats">
+                        <div>血量: <span id="player1Blood">0</span>/<span id="player1MaxBlood">0</span></div>
+                        <div class="stat-bar blood-bar">
+                            <div class="stat-fill" id="player1BloodBar" style="width: 100%;"></div>
+                        </div>
+                        <div>护甲: <span id="player1Armor">0</span>/<span id="player1MaxArmor">0</span></div>
+                        <div class="stat-bar armor-bar">
+                            <div class="stat-fill" id="player1ArmorBar" style="width: 100%;"></div>
+                        </div>
+                        <div>能量: <span id="player1Energy">0</span></div>
+                        <div class="stat-bar energy-bar">
+                            <div class="stat-fill" id="player1EnergyBar" style="width: 0%;"></div>
+                        </div>
+                        <div>生命: <span id="player1Life">无</span></div>
+                        <div>天赋: <span id="player1Talent">无</span></div>
+                        <div>特性: <span id="player1Feature">无</span></div>
+                        <div>攻击: <span id="player1Hurt">无</span></div>
+                        <div>速度: <span id="player1Speed">无</span></div>
+                        
+                    </div>
+                </div>
+
+                <div class="vs">VS</div>
+
+                <div class="player" id="player2">
+                    <div class="player-image">👤</div>
+                    <div class="player-name" id="player2Name">玩家2</div>
+                    <div class="player-stats">
+                        <div>血量: <span id="player2Blood">0</span>/<span id="player2MaxBlood">0</span></div>
+                        <div class="stat-bar blood-bar">
+                            <div class="stat-fill" id="player2BloodBar" style="width: 100%;"></div>
+                        </div>
+                        <div>护甲: <span id="player2Armor">0</span>/<span id="player2MaxArmor">0</span></div>
+                        <div class="stat-bar armor-bar">
+                            <div class="stat-fill" id="player2ArmorBar" style="width: 100%;"></div>
+                        </div>
+                        <div>能量: <span id="player2Energy">0</span></div>
+                        <div class="stat-bar energy-bar">
+                            <div class="stat-fill" id="player2EnergyBar" style="width: 0%;"></div>
+                        </div>
+                        <div>生命: <span id="player2Life">无</span></div>
+                        <div>天赋: <span id="player2Talent">无</span></div>
+                        <div>特性: <span id="player2Feature">无</span></div>
+                        <div>攻击: <span id="player2Hurt">无</span></div>
+                        <div>速度: <span id="player2Speed">无</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="controls">
+                <div class="action-buttons">
+                    <!-- <button class="attack-btn" onclick="performAttack()" id="attackBtn" disabled>⚔️ 普通攻击</button>
+                    <button class="skill-btn" onclick="performSkill()" id="skillBtn" disabled>⚡ 技能攻击</button>
+                    <button onclick="endTurn()" id="endTurnBtn" disabled>⏭️ 结束回合</button> -->
+                    <button onclick="resetGame()">🔄 重新开始</button>
+                </div>
+            </div>
+
+            <div class="game-log" id="gameLog">
+                <div class="log-entry">欢迎来到英雄格斗游戏！</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./jsPart/introductionButton.js"></script>
+    <script src="./jsPart/hero.js"></script>
+    <script src="./jsPart/specificHero.js"></script>
+    <script src="./jsPart/game.js"></script>
+</body>
+
+</html>
